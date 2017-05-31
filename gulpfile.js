@@ -108,7 +108,7 @@ gulp.task('serve', ['html','webpack','styles','copy','copy-images','copy-fonts']
 	});
 	gulp.watch(['src/**/*.html'],['html', reload]);
 	gulp.watch(['src/**/*.js'], ['webpack', reload]);
-	gulp.watch(['src/**/*.sass','src/**/*.css'], ['styles', reload]);
+	gulp.watch(['src/**/*.scss','src/**/*.css'], ['styles', reload]);
 	// gulp.watch(['src/**/*.js'], ['scripts', reload]);
 });
 gulp.task('serve:dist', ['default'], ()=>{
