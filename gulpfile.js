@@ -61,24 +61,24 @@ gulp.task('html-prod', ()=>{
 
 gulp.task('styles', ()=>{
 	return gulp.src([
-		'src/css/**/*.scss',
-		'src/css/**/*.css'
+		'src/**/*.scss',
+		'src/**/*.css'
 	])
 	.pipe(gulpsass({
 		precision: 10
 	}))
-	.pipe(gulp.dest('build/css/'));
+	.pipe(gulp.dest('build'));
 });
 gulp.task('styles-prod',()=>{
 	return gulp.src([
-		'src/css/**/*.scss',
-		'src/css/**/*.css'
+		'src/**/*.scss',
+		'src/**/*.css'
 	])
 	.pipe(gulpsass({
 		precision: 10
 	}))
 	.pipe(cssnano())
-	.pipe(gulp.dest('dist/css/'));
+	.pipe(gulp.dest('dist'));
 });
 
 gulp.task('clean', ()=>{
