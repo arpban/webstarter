@@ -16,7 +16,15 @@ gulp.task('scripts', ()=>{
 	.pipe(babel({
 		presets: ['es2015']
 	}))
-	.pipe(gulp.dest('build'));
+	.pipe(gulp.dest('build/js/'));
+});
+gulp.task('scripts-prod', ()=>{
+	return gulp.src('src/**/*.js')
+	.pipe(babel({
+		presets: ['es2015']
+	}))
+	.pipe(uglify())
+	.pipe(gulp.dest('dist/js/'));
 });
 
 gulp.task('webpack', ()=>{
