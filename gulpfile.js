@@ -8,6 +8,7 @@ const uglify = require('gulp-uglify');
 const htmlmin = require('gulp-htmlmin');
 const gulpsass = require('gulp-sass');
 const cssnano = require('gulp-cssnano');
+const autoprefixer = require('gulp-autoprefixer');
 
 const reload = browserSync.reload;
  
@@ -67,6 +68,7 @@ gulp.task('styles', ()=>{
 	.pipe(gulpsass({
 		precision: 10
 	}))
+	.pipe(autoprefixer())
 	.pipe(gulp.dest('build'));
 });
 gulp.task('styles-prod',()=>{
@@ -77,6 +79,7 @@ gulp.task('styles-prod',()=>{
 	.pipe(gulpsass({
 		precision: 10
 	}))
+	.pipe(autoprefixer())
 	.pipe(cssnano())
 	.pipe(gulp.dest('dist'));
 });
