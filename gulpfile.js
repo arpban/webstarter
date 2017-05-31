@@ -16,7 +16,7 @@ gulp.task('scripts', ()=>{
 	.pipe(babel({
 		presets: ['es2015']
 	}))
-	.pipe(gulp.dest('build/js/'));
+	.pipe(gulp.dest('build'));
 });
 gulp.task('scripts-prod', ()=>{
 	return gulp.src('src/**/*.js')
@@ -24,7 +24,7 @@ gulp.task('scripts-prod', ()=>{
 		presets: ['es2015']
 	}))
 	.pipe(uglify())
-	.pipe(gulp.dest('dist/js/'));
+	.pipe(gulp.dest('dist'));
 });
 
 gulp.task('webpack', ()=>{
@@ -108,7 +108,7 @@ gulp.task('copy-images', ()=>{
 	.pipe(gulp.dest('dist/img/'));
 });
 
-gulp.task('serve', ['html','webpack','styles','copy','copy-images','copy-fonts'], ()=>{
+gulp.task('serve', ['html','scripts','styles','copy','copy-images','copy-fonts'], ()=>{
 	browserSync({
 		notify: false,
 		server: ['build'],
