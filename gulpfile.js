@@ -61,6 +61,18 @@ gulp.task('html-prod', ()=>{
 });
 
 gulp.task('styles', ()=>{
+	const AUTOPREFIXER_BROWSERS = [
+    'ie >= 10',
+    'ie_mob >= 10',
+    'ff >= 30',
+    'chrome >= 34',
+    'safari >= 7',
+    'opera >= 23',
+    'ios >= 7',
+    'android >= 4.4',
+    'bb >= 10'
+  	];
+
 	return gulp.src([
 		'src/**/*.scss',
 		'src/**/*.css'
@@ -68,10 +80,22 @@ gulp.task('styles', ()=>{
 	.pipe(gulpsass({
 		precision: 10
 	}))
-	.pipe(autoprefixer())
+	.pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
 	.pipe(gulp.dest('build'));
 });
 gulp.task('styles-prod',()=>{
+	const AUTOPREFIXER_BROWSERS = [
+    'ie >= 10',
+    'ie_mob >= 10',
+    'ff >= 30',
+    'chrome >= 34',
+    'safari >= 7',
+    'opera >= 23',
+    'ios >= 7',
+    'android >= 4.4',
+    'bb >= 10'
+  	];
+
 	return gulp.src([
 		'src/**/*.scss',
 		'src/**/*.css'
@@ -79,7 +103,7 @@ gulp.task('styles-prod',()=>{
 	.pipe(gulpsass({
 		precision: 10
 	}))
-	.pipe(autoprefixer())
+	.pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
 	.pipe(cssnano())
 	.pipe(gulp.dest('dist'));
 });
@@ -111,7 +135,7 @@ gulp.task('copy-images', ()=>{
 	.pipe(gulp.dest('dist/img/'));
 });
 
-gulp.task('serve', ['html','scripts','styles','copy','copy-images','copy-fonts'], ()=>{
+gulp.task('serve', ['html','webpack','styles','copy','copy-images','copy-fonts'], ()=>{
 	browserSync({
 		notify: false,
 		server: ['build'],
